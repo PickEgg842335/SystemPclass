@@ -1,0 +1,20 @@
+印出hello world
+lab_basic_helloworld.sh
+
+把目錄下大寫的檔案名稱 修改成小寫的檔案名稱
+lab_for_filename.sh
+
+修改檔名, 把 *.htm 修改成 *.html
+lab_for_htm2html.sh
+
+將工作目錄下所有檔案權限變更為777
+lab_for_chmod.sh
+
+輸入 ./lab_while_shift_bak.sh f1 f2 f3 f4 .. fn 把每個 f* 複製成 f*.bak 
+lab_while_shift_bak.sh
+
+輸入0~9數字印出對應的單字
+lab_case_digit2string.sh
+
+輸入一個字判斷是數字或大寫字或小寫字或其他
+lab_case_ctype.sh
