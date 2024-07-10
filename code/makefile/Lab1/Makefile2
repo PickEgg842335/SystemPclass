@@ -1,0 +1,17 @@
+# Makefile
+all:hello_pract.out
+CC = gcc
+INCLUDE = .
+CFLAGS = -O -Wall -ansi
+objects = hello.o hello_func.o 
+source = hello.c hello_func.c hello_api.h
+
+hello_pract.out: $(objects)
+	$(CC) -o hello_pract.out $(objects)
+hello.o: hello.c hello_api.h
+	$(CC) -I$(INCLUDE) $(CFLAGS) -c hello.c
+hello_func.o: hello_func.c hello_api.h
+	$(CC) -I$(INCLUDE) $(CFLAGS) -c hello_func.c
+clean:
+	-rm hello_pract.out *.o
+
