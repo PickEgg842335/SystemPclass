@@ -1,0 +1,35 @@
+# Makefile
+all:hello_pract.out
+CC = gcc
+INSTDIR = ./install
+INCLUDE = .
+CFLAGS = -O -Wall -ansi
+objects = hello.o hello_func.o 
+source = hello.c hello_func.c hello_api.h
+MYLIB = mylib.a
+hello_pract.out: $(MYLIB)
+	$(CC) -o hello_pract.out $(MYLIB)
+
+$(MYLIB): $(MYLIB)($(objects))
+
+.SUFFIXES:.c
+.c .o:
+	$(CC) -c -I$(INCLUDE) $(CFLAGS) $<
+
+#$(objects): %.o: %.c
+	#$(CC) -c $(CFLAGS) $< -o $@
+
+clean:
+	-rm hello_pract.out *.a
+
+.PHONY: install
+install:hello_pract.out
+	@if [ -d $(INSTDIR) ];\
+	then \
+		cp hello_pract.out $(INSTDIR);\
+		chmod a+x $(INSTDIR)/hello_pract.out;\
+		chmod og-w $(INSTDIR)/hello_pract.out;\
+		echo "Installed in $(INSTDIR)";\
+	else \
+		echo "Sorry, $(INSTDIR) does not exist";\
+	fi
