@@ -20,7 +20,7 @@ int main()
     pid_t pid;
 
     printf("alarm application starting\n");
-
+	printf("%d\n", getpid());
     pid = fork();
     switch(pid) {
     case -1:
@@ -29,10 +29,15 @@ int main()
       exit(1);
     case 0:
       /* child */
-		while(1){
+      sleep(5);
+	  printf("child ppid %d\n", getppid());
+	  printf("child pid %d\n", getpid());
+      //kill(getppid(), SIGALRM);
+      kill(getppid(), SIGINT);
+		/*while(1){
 			printf("Child ...\n");
 			sleep(1);
-		}
+		}*/
         exit(0);
     }
 
@@ -40,8 +45,13 @@ int main()
     and then waits for the inevitable.  */
 
     printf("waiting for alarm to go off\n");
-	sleep(3);
+	(void)signal(SIGINT, ding);
+    pause();
+	if(alarm_fired)
+     printf("Ding!\n");
+    printf("pid = %d,done\n", getpid());
+	/*sleep(3);
 	kill(pid, SIGINT);
-    printf("done\n");
+    printf("done\n");*/
     exit(0);
 }

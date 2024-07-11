@@ -21,7 +21,7 @@ int main() {
 
     while(print_count1++ < 20) {
         if (run_now == 1) {
-            printf("1");
+            printf("1\n");
             run_now = 2;
         }
         else {
@@ -44,7 +44,7 @@ void *thread_function(void *arg) {
 
     while(print_count2++ < 20) {
         if (run_now == 2) {
-            printf("2");
+            printf("2\n");
             run_now = 1;
         }
         else {
